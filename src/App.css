@@ -1,0 +1,450 @@
+/* src/App.css */
+
+/* ---------------------------------------------------------------
+   Design tokens
+   A dark, quiet backdrop (most themes are dusk/night/water scenes
+   anyway) with one warm accent — like a lantern in the dark — used
+   sparingly for active/emphasis states rather than decoration.
+------------------------------------------------------------------ */
+:root {
+  color-scheme: dark;
+
+  --color-night: #0a1210;
+  --color-ink: #f4f6f2;
+  --color-mist: #9fb0ac;
+  --color-ember: #e8a24c;
+  --color-ember-soft: rgba(232, 162, 76, 0.16);
+
+  --color-surface: rgba(244, 246, 242, 0.06);
+  --color-surface-strong: rgba(244, 246, 242, 0.1);
+  --color-border: rgba(244, 246, 242, 0.14);
+
+  --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --transition-fast: 180ms ease;
+  --transition-medium: 320ms ease;
+  --transition-slow: 600ms ease;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-full: 999px;
+}
+
+/* ---------------------------------------------------------------
+   Reset & base
+------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-night);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ember);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------
+   App shell (home view)
+------------------------------------------------------------------ */
+.app {
+  min-height: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 2rem) 5rem;
+}
+
+.app__header {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  max-width: 40ch;
+}
+
+.app__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem;
+}
+
+.app__subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--color-mist);
+  margin: 0;
+}
+
+.app__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+/* ---------------------------------------------------------------
+   Theme card
+------------------------------------------------------------------ */
+.theme-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--transition-medium);
+}
+
+.theme-card:hover,
+.theme-card:focus-visible {
+  transform: translateY(-4px);
+}
+
+.theme-card__poster {
+  position: absolute;
+  inset: 0;
+  background-image: var(--theme-poster);
+  background-size: cover;
+  background-position: center;
+  transition: transform var(--transition-slow);
+}
+
+.theme-card:hover .theme-card__poster,
+.theme-card:focus-visible .theme-card__poster {
+  transform: scale(1.06);
+}
+
+.theme-card__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 18, 16, 0) 40%, rgba(10, 18, 16, 0.92) 100%);
+}
+
+.theme-card__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.theme-card__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.theme-card__description {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--color-mist);
+}
+
+/* ---------------------------------------------------------------
+   Dashboard
+------------------------------------------------------------------ */
+.dashboard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.dashboard__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard__title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.dashboard__total {
+  font-size: 0.95rem;
+  color: var(--color-ember);
+  margin: 0;
+}
+
+.dashboard__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dashboard__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(244, 246, 242, 0.03);
+  overflow: hidden;
+}
+
+.dashboard__row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--row-fill, 0%);
+  background: var(--color-ember-soft);
+  transition: width var(--transition-slow);
+}
+
+.dashboard__row-name,
+.dashboard__row-time {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard__row-name {
+  font-weight: 500;
+}
+
+.dashboard__row-time {
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-mist);
+}
+
+.dashboard__reset {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--color-mist);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.dashboard__reset:hover {
+  color: var(--color-ink);
+}
+
+/* ---------------------------------------------------------------
+   Session (full-screen view)
+------------------------------------------------------------------ */
+.session {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  cursor: default;
+}
+
+.session--idle {
+  cursor: none;
+}
+
+.session__poster,
+.session__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.session__poster {
+  background-size: cover;
+  background-position: center;
+}
+
+.session__video {
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.session__video--ready {
+  opacity: 1;
+}
+
+.session audio {
+  display: none;
+}
+
+.session__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0) 22%,
+    rgba(0, 0, 0, 0) 68%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+.session__overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity var(--transition-medium);
+}
+
+.session--idle .session__overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.session__exit-button {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + clamp(1rem, 4vw, 2rem));
+  left: calc(env(safe-area-inset-left, 0px) + clamp(1rem, 4vw, 2rem));
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem 0.6rem 0.8rem;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-size: 0.85rem;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.session__exit-button:hover,
+.session__exit-button:focus-visible {
+  background: var(--color-surface-strong);
+  transform: translateY(-1px);
+}
+
+.session__exit-icon {
+  flex-shrink: 0;
+}
+
+.session__timer {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + clamp(1rem, 4vw, 2rem));
+  right: calc(env(safe-area-inset-right, 0px) + clamp(1rem, 4vw, 2rem));
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.session__theme-label {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + clamp(1rem, 4vw, 2rem));
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-mist);
+}
+
+.session__audio-tracks {
+  position: absolute;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(1.25rem, 5vw, 2.5rem));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 92vw;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.session__audio-track {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  white-space: nowrap;
+  color: var(--color-mist);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.session__audio-track--active {
+  background: var(--color-ember-soft);
+  color: var(--color-ember);
+}
+
+/* ---------------------------------------------------------------
+   Small screens
+------------------------------------------------------------------ */
+@media (max-width: 480px) {
+  .session__audio-track {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .session__theme-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Accessibility: respect reduced-motion preference
+------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
