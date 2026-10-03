@@ -9,7 +9,7 @@
  *  - the Session audio-track picker
  *  - the Dashboard lookup (matched by `id` against storage stats)
  *
- * To add a theme: drop its media into `public/media/<id>/` and add
+ * To add a theme: drop its media into `public./media/<id>/` and add
  * an entry below. Nothing else in the app needs to change.
  *
  * Media is NOT bundled with this scaffold — point `posterUrl`,
@@ -38,66 +38,66 @@ export const THEMES = [
     id: 'maldives-sea',
     name: 'Maldives Sea',
     description: 'Turquoise shallows and a quiet tropical horizon.',
-    posterUrl: '/media/maldives-sea/poster.jpg',
-    videoUrl: '/media/maldives-sea/loop.mp4',
+    posterUrl: './media/maldives-sea/poster.jpg',
+    videoUrl: './media/maldives-sea/loop.mp4',
     audioTracks: [
-      { id: 'shoreline', label: 'Shoreline Lapping', src: '/media/maldives-sea/shoreline.mp3' },
-      { id: 'deep-waves', label: 'Deep Ocean Waves', src: '/media/maldives-sea/deep-waves.mp3' },
+      { id: 'shoreline', label: 'Shoreline Lapping', src: './media/maldives-sea/shoreline.mp3' },
+      { id: 'deep-waves', label: 'Deep Ocean Waves', src: './media/maldives-sea/deep-waves.mp3' },
     ],
   },
   {
     id: 'hawaii',
     name: 'Hawaii',
     description: 'Golden sunset light over a warm, rolling surf.',
-    posterUrl: '/media/hawaii/poster.jpg',
-    videoUrl: '/media/hawaii/loop.mp4',
+    posterUrl: './media/hawaii/poster.jpg',
+    videoUrl: './media/hawaii/loop.mp4',
     audioTracks: [
-      { id: 'gentle-surf', label: 'Gentle Surf', src: '/media/hawaii/gentle-surf.mp3' },
-      { id: 'ukulele', label: 'Acoustic Ukulele', src: '/media/hawaii/ukulele.mp3' },
+      { id: 'gentle-surf', label: 'Gentle Surf', src: './media/hawaii/gentle-surf.mp3' },
+      { id: 'ukulele', label: 'Acoustic Ukulele', src: './media/hawaii/ukulele.mp3' },
     ],
   },
   {
     id: 'antarctica',
     name: 'Antarctica',
     description: 'A glacier blizzard under a pale, wind-scoured sky.',
-    posterUrl: '/media/antarctica/poster.jpg',
-    videoUrl: '/media/antarctica/loop.mp4',
+    posterUrl: './media/antarctica/poster.jpg',
+    videoUrl: './media/antarctica/loop.mp4',
     audioTracks: [
-      { id: 'howling-wind', label: 'Howling Wind', src: '/media/antarctica/howling-wind.mp3' },
-      { id: 'ice-crackle', label: 'Ice Crackling', src: '/media/antarctica/ice-crackle.mp3' },
+      { id: 'howling-wind', label: 'Howling Wind', src: './media/antarctica/howling-wind.mp3' },
+      { id: 'ice-crackle', label: 'Ice Crackling', src: './media/antarctica/ice-crackle.mp3' },
     ],
   },
   {
     id: 'christmas-snow',
     name: 'Christmas Snow',
     description: 'Cozy snowfall outside a warmly lit window.',
-    posterUrl: '/media/christmas-snow/poster.jpg',
-    videoUrl: '/media/christmas-snow/loop.mp4',
+    posterUrl: './media/christmas-snow/poster.jpg',
+    videoUrl: './media/christmas-snow/loop.mp4',
     audioTracks: [
-      { id: 'fireplace', label: 'Fireplace Crackle', src: '/media/christmas-snow/fireplace.mp3' },
-      { id: 'festive-bells', label: 'Festive Bells', src: '/media/christmas-snow/festive-bells.mp3' },
+      { id: 'fireplace', label: 'Fireplace Crackle', src: './media/christmas-snow/fireplace.mp3' },
+      { id: 'festive-bells', label: 'Festive Bells', src: './media/christmas-snow/festive-bells.mp3' },
     ],
   },
   {
     id: 'scary-storm',
     name: 'Scary Storm',
     description: 'Sheet lightning and heavy rain over a darkened coast.',
-    posterUrl: '/media/scary-storm/poster.jpg',
-    videoUrl: '/media/scary-storm/loop.mp4',
+    posterUrl: './media/scary-storm/poster.jpg',
+    videoUrl: './media/scary-storm/loop.mp4',
     audioTracks: [
-      { id: 'heavy-rainfall', label: 'Heavy Rainfall', src: '/media/scary-storm/heavy-rainfall.mp3' },
-      { id: 'distant-thunder', label: 'Distant Thunder', src: '/media/scary-storm/distant-thunder.mp3' },
+      { id: 'heavy-rainfall', label: 'Heavy Rainfall', src: './media/scary-storm/heavy-rainfall.mp3' },
+      { id: 'distant-thunder', label: 'Distant Thunder', src: './media/scary-storm/distant-thunder.mp3' },
     ],
   },
   {
     id: 'halloween',
     name: 'Halloween',
     description: 'A misty graveyard path under a low autumn moon.',
-    posterUrl: '/media/halloween/poster.jpg',
-    videoUrl: '/media/halloween/loop.mp4',
+    posterUrl: './media/halloween/poster.jpg',
+    videoUrl: './media/halloween/loop.mp4',
     audioTracks: [
-      { id: 'eerie-breeze', label: 'Eerie Breeze', src: '/media/halloween/eerie-breeze.mp3' },
-      { id: 'owl-hooting', label: 'Owl Hooting', src: '/media/halloween/owl-hooting.mp3' },
+      { id: 'eerie-breeze', label: 'Eerie Breeze', src: './media/halloween/eerie-breeze.mp3' },
+      { id: 'owl-hooting', label: 'Owl Hooting', src: './media/halloween/owl-hooting.mp3' },
     ],
   },
 ];
