@@ -16,7 +16,7 @@ export default function App() {
   return (
     <main className="app">
       <header className="app__header">
-        <h1 className="app__title">Focus</h1>
+        <h1 className="app__title">Ambient & Focus</h1>
         <p className="app__subtitle">Pick a scene, and disappear into it for a while.</p>
       </header>
 
